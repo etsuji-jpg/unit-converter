@@ -622,35 +622,35 @@ export default function Converter() {
   const s = { border:"none", cursor:"pointer", fontFamily:"inherit" };
 
   return (
-    <div style={{ minHeight:"100vh", background:"linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f172a 100%)", fontFamily:"'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif", display:"flex", flexDirection:"column", alignItems:"center", padding:"28px 16px" }}>
+    <div style={{ minHeight:"100vh", background:"#f0f9ff", fontFamily:"'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif", display:"flex", flexDirection:"column", alignItems:"center", padding:"28px 16px" }}>
 
       {/* ヘッダー */}
       <div style={{ textAlign:"center", marginBottom:24 }}>
-        <h1 style={{ fontSize:26, fontWeight:800, margin:0, background:"linear-gradient(90deg,#38bdf8,#818cf8)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>ユニット対応表ツール</h1>
-        <div style={{ fontSize:13, color:"#64748b", marginTop:4 }}>英語王 / 単語王 ↔ タイピィの冒険</div>
+        <h1 style={{ fontSize:26, fontWeight:800, margin:0, color:"#0284c7", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>ユニット対応表ツール</h1>
+        <div style={{ fontSize:13, color:"#0369a1", marginTop:4 }}>英語王 / 単語王 ↔ タイピィの冒険</div>
       </div>
 
-      <div style={{ background:"#1e293b", border:"1px solid #334155", borderRadius:20, padding:"24px", width:"100%", maxWidth:540, boxShadow:"0 20px 60px rgba(0,0,0,0.4)" }}>
+      <div style={{ background:"#ffffff", border:"1px solid #bae6fd", borderRadius:20, padding:"24px", width:"100%", maxWidth:540, boxShadow:"0 8px 32px rgba(14,165,233,0.15)" }}>
 
         {/* セクション切替 */}
-        <div style={{ display:"flex", background:"#0f172a", borderRadius:12, padding:4, marginBottom:20, gap:4 }}>
+        <div style={{ display:"flex", background:"#e0f2fe", borderRadius:12, padding:4, marginBottom:20, gap:4 }}>
           {[{key:"typing",label:"⌨️ タイピング基礎"},{key:"tango",label:"📚 基礎単語"},{key:"tango3",label:"📗 中１単語"},{key:"tango5",label:"📘 中２単語"},{key:"tango7",label:"📙 中３単語"}].map(sec=>(
-            <button key={sec.key} onClick={()=>handleSectionChange(sec.key)} style={{ ...s, flex:1, padding:"9px 4px", borderRadius:9, fontSize:12, fontWeight:700, background:section===sec.key?"linear-gradient(135deg,#0ea5e9,#6366f1)":"transparent", color:section===sec.key?"#fff":"#64748b", boxShadow:section===sec.key?"0 4px 12px rgba(14,165,233,0.3)":"none" }}>{sec.label}</button>
+            <button key={sec.key} onClick={()=>handleSectionChange(sec.key)} style={{ ...s, flex:1, padding:"9px 4px", borderRadius:9, fontSize:12, fontWeight:700, background:section===sec.key?"linear-gradient(135deg,#0ea5e9,#6366f1)":"transparent", color:section===sec.key?"#fff":"#0369a1", boxShadow:section===sec.key?"0 4px 12px rgba(14,165,233,0.3)":"none" }}>{sec.label}</button>
           ))}
         </div>
 
         {/* 単語王サブラベル */}
         {section==="tango" && (
-          <div style={{ fontSize:12, color:"#38bdf8", fontWeight:700, marginBottom:12, paddingLeft:4 }}>基礎単語</div>
+          <div style={{ fontSize:12, color:"#0284c7", fontWeight:700, marginBottom:12, paddingLeft:4 }}>基礎単語</div>
         )}
 
         {/* 方向切替 */}
-        <div style={{ display:"flex", background:"#0f172a", borderRadius:12, padding:4, marginBottom:20, gap:4 }}>
+        <div style={{ display:"flex", background:"#e0f2fe", borderRadius:12, padding:4, marginBottom:20, gap:4 }}>
           {[
             {key:"eigo_to_tapii",label:section==="typing"?"英語王 → タイピィ":"単語王 → タイピィ",icon:"👑"},
             {key:"tapii_to_eigo",label:section==="typing"?"タイピィ → 英語王":"タイピィ → 単語王",icon:"🗺️"}
           ].map(m=>(
-            <button key={m.key} onClick={()=>handleModeChange(m.key)} style={{ ...s, flex:1, padding:"9px 6px", borderRadius:9, fontSize:12, fontWeight:700, background:mode===m.key?"linear-gradient(135deg,#3b82f6,#6366f1)":"transparent", color:mode===m.key?"#fff":"#64748b", boxShadow:mode===m.key?"0 4px 12px rgba(99,102,241,0.4)":"none" }}>{m.icon} {m.label}</button>
+            <button key={m.key} onClick={()=>handleModeChange(m.key)} style={{ ...s, flex:1, padding:"9px 6px", borderRadius:9, fontSize:12, fontWeight:700, background:mode===m.key?"linear-gradient(135deg,#3b82f6,#6366f1)":"transparent", color:mode===m.key?"#fff":"#0369a1", boxShadow:mode===m.key?"0 4px 12px rgba(99,102,241,0.4)":"none" }}>{m.icon} {m.label}</button>
           ))}
         </div>
 
@@ -748,14 +748,14 @@ export default function Converter() {
           </div>
         )}
 
-        <button onClick={handleConvert} style={{ ...s, width:"100%", marginTop:20, padding:"13px", background:"linear-gradient(135deg,#0ea5e9,#6366f1)", borderRadius:12, color:"#fff", fontSize:15, fontWeight:800, letterSpacing:1, boxShadow:"0 4px 20px rgba(99,102,241,0.35)" }}>
+        <button onClick={handleConvert} style={{ ...s, width:"100%", marginTop:20, padding:"13px", background:"#fbbf24", borderRadius:12, color:"#78350f", fontSize:15, fontWeight:800, letterSpacing:1, boxShadow:"0 4px 20px rgba(251,191,36,0.35)" }}>
           対応するステージを調べる →
         </button>
 
         {result && <ResultBox result={result} tgPageNames={TG_PAGE_NAMES} tgPageCats={TG_PAGE_CATS} />}
       </div>
 
-      <div style={{ fontSize:11, color:"#475569", marginTop:16, textAlign:"center" }}>
+      <div style={{ fontSize:11, color:"#0369a1", marginTop:16, textAlign:"center" }}>
         ※ movie_url・question_body・answer照合（前後一致）で生成した対応表です
       </div>
     </div>
@@ -763,32 +763,32 @@ export default function Converter() {
 }
 
 function Label({children}) {
-  return <div style={{fontSize:12,fontWeight:700,color:"#94a3b8",marginBottom:8,letterSpacing:0.5}}>{children}</div>;
+  return <div style={{fontSize:12,fontWeight:700,color:"#0284c7",marginBottom:8,letterSpacing:0.5}}>{children}</div>;
 }
 function SegmentControl({options,value,onChange}) {
   return (
     <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
       {options.map(opt=>(
-        <button key={opt.value} onClick={()=>onChange(opt.value)} style={{ padding:"7px 12px", borderRadius:8, border:"1.5px solid", borderColor:value===opt.value?"#6366f1":"#334155", background:value===opt.value?"rgba(99,102,241,0.18)":"transparent", color:value===opt.value?"#818cf8":"#64748b", fontSize:13, fontWeight:700, cursor:"pointer", fontFamily:"inherit" }}>{opt.label}</button>
+        <button key={opt.value} onClick={()=>onChange(opt.value)} style={{ padding:"7px 12px", borderRadius:8, border:"1.5px solid", borderColor:value===opt.value?"#0ea5e9":"#bae6fd", background:value===opt.value?"rgba(14,165,233,0.15)":"transparent", color:value===opt.value?"#0284c7":"#0369a1", fontSize:13, fontWeight:700, cursor:"pointer", fontFamily:"inherit" }}>{opt.label}</button>
       ))}
     </div>
   );
 }
 function NumberSlider({value,min,max,onChange}) {
-  const btn={width:36,height:36,borderRadius:8,border:"1.5px solid #334155",background:"#0f172a",color:"#94a3b8",fontSize:18,cursor:"pointer",fontFamily:"inherit"};
+  const btn={width:36,height:36,borderRadius:8,border:"1.5px solid #bae6fd",background:"#e0f2fe",color:"#0284c7",fontSize:18,cursor:"pointer",fontFamily:"inherit"};
   return (
     <div style={{display:"flex",alignItems:"center",gap:12}}>
       <button onClick={()=>onChange(Math.max(min,value-1))} style={btn}>−</button>
-      <div style={{flex:1,textAlign:"center",fontSize:28,fontWeight:800,color:"#f1f5f9",background:"#0f172a",borderRadius:10,padding:"8px 0",border:"1.5px solid #334155"}}>{value}</div>
+      <div style={{flex:1,textAlign:"center",fontSize:28,fontWeight:800,color:"#0c4a6e",background:"#e0f2fe",borderRadius:10,padding:"8px 0",border:"1.5px solid #bae6fd"}}>{value}</div>
       <button onClick={()=>onChange(Math.min(max,value+1))} style={btn}>＋</button>
     </div>
   );
 }
 
 function ResultBox({result, tgPageNames, tgPageCats}) {
-  const card={marginTop:18,background:"linear-gradient(135deg,rgba(14,165,233,0.08),rgba(99,102,241,0.08))",border:"1px solid rgba(99,102,241,0.3)",borderRadius:14,padding:"18px"};
-  const lbl={fontSize:12,color:"#94a3b8",marginBottom:8,fontWeight:700};
-  const sub={fontSize:13,color:"#64748b",marginBottom:10};
+  const card={marginTop:18,background:"linear-gradient(135deg,rgba(14,165,233,0.06),rgba(251,191,36,0.06))",border:"1px solid #bae6fd",borderRadius:14,padding:"18px"};
+  const lbl={fontSize:12,color:"#0284c7",marginBottom:8,fontWeight:700};
+  const sub={fontSize:13,color:"#0369a1",marginBottom:10};
   const chip=(label,color="#6366f1")=>(
     <div style={{display:"inline-block",background:`linear-gradient(135deg,${color},${color}99)`,borderRadius:7,padding:"4px 10px",fontSize:12,fontWeight:800,color:"#fff",marginRight:8}}>{label}</div>
   );
@@ -797,12 +797,12 @@ function ResultBox({result, tgPageNames, tgPageCats}) {
     return (
       <div style={card}>
         <div style={lbl}>変換結果 — タイピング基礎</div>
-        <div style={{fontSize:16,fontWeight:800,color:"#38bdf8",marginBottom:10}}>👑 英語王 Unit{result.unit} - {result.sub}</div>
+        <div style={{fontSize:16,fontWeight:800,color:"#0284c7",marginBottom:10}}>👑 英語王 Unit{result.unit} - {result.sub}</div>
         <div style={sub}>▼ タイピィの冒険では</div>
         {result.data ? (
-          <div style={{display:"flex",alignItems:"center",gap:10,background:"#0f172a",borderRadius:10,padding:"12px 14px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,background:"#e0f2fe",borderRadius:10,padding:"12px 14px"}}>
             {chip(`ページ ${result.data.page}`)}
-            <div style={{fontSize:18,fontWeight:800,color:"#94a3b8"}}>{result.data.stage}</div>
+            <div style={{fontSize:18,fontWeight:800,color:"#0284c7"}}>{result.data.stage}</div>
           </div>
         ) : <div style={{color:"#ef4444"}}>対応するステージが見つかりませんでした</div>}
       </div>
@@ -812,12 +812,12 @@ function ResultBox({result, tgPageNames, tgPageCats}) {
     return (
       <div style={card}>
         <div style={lbl}>変換結果 — タイピング基礎</div>
-        <div style={{fontSize:16,fontWeight:800,color:"#818cf8",marginBottom:10}}>🗺️ タイピィ ページ{result.page} - ステージ{result.stage}</div>
+        <div style={{fontSize:16,fontWeight:800,color:"#0369a1",marginBottom:10}}>🗺️ タイピィ ページ{result.page} - ステージ{result.stage}</div>
         <div style={sub}>▼ 英語王では</div>
         {result.data ? (
-          <div style={{display:"flex",alignItems:"center",gap:10,background:"#0f172a",borderRadius:10,padding:"12px 14px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,background:"#e0f2fe",borderRadius:10,padding:"12px 14px"}}>
             <span style={{fontSize:20}}>👑</span>
-            <div style={{fontSize:20,fontWeight:800,color:"#38bdf8"}}>Unit {result.data.unit} - {result.data.sub}</div>
+            <div style={{fontSize:20,fontWeight:800,color:"#0284c7"}}>Unit {result.data.unit} - {result.data.sub}</div>
           </div>
         ) : <div style={{color:"#ef4444"}}>対応するユニットが見つかりませんでした</div>}
       </div>
@@ -829,12 +829,12 @@ function ResultBox({result, tgPageNames, tgPageCats}) {
     return (
       <div style={card}>
         <div style={lbl}>変換結果 — 単語王 基礎単語</div>
-        <div style={{fontSize:16,fontWeight:800,color:"#38bdf8",marginBottom:10}}>📚 単語王 {pageName} / {catLabel}</div>
+        <div style={{fontSize:16,fontWeight:800,color:"#0284c7",marginBottom:10}}>📚 単語王 {pageName} / {catLabel}</div>
         <div style={sub}>▼ タイピィの冒険では（開始ステージ）</div>
         {result.data ? (
-          <div style={{display:"flex",alignItems:"center",gap:10,background:"#0f172a",borderRadius:10,padding:"12px 14px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,background:"#e0f2fe",borderRadius:10,padding:"12px 14px"}}>
             {chip(`ページ ${result.data.page}`,"#0ea5e9")}
-            <div style={{fontSize:16,fontWeight:800,color:"#94a3b8"}}>
+            <div style={{fontSize:16,fontWeight:800,color:"#0284c7"}}>
               {result.data.stage} または {result.data.stage.replace(/\d+/, n => parseInt(n)+1)}
             </div>
           </div>
@@ -847,12 +847,12 @@ function ResultBox({result, tgPageNames, tgPageCats}) {
     return (
       <div style={card}>
         <div style={lbl}>変換結果 — 単語王 基礎単語</div>
-        <div style={{fontSize:16,fontWeight:800,color:"#818cf8",marginBottom:10}}>🗺️ タイピィ ページ{result.tapii_page} - ステージ{result.tapii_stage}</div>
+        <div style={{fontSize:16,fontWeight:800,color:"#0369a1",marginBottom:10}}>🗺️ タイピィ ページ{result.tapii_page} - ステージ{result.tapii_stage}</div>
         <div style={sub}>▼ 単語王では</div>
         {result.data ? (
-          <div style={{display:"flex",alignItems:"center",gap:10,background:"#0f172a",borderRadius:10,padding:"12px 14px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,background:"#e0f2fe",borderRadius:10,padding:"12px 14px"}}>
             <span style={{fontSize:20}}>📚</span>
-            <div style={{fontSize:18,fontWeight:800,color:"#38bdf8"}}>{tgPageNames[result.data.page_no]} / {catLabel}</div>
+            <div style={{fontSize:18,fontWeight:800,color:"#0284c7"}}>{tgPageNames[result.data.page_no]} / {catLabel}</div>
           </div>
         ) : <div style={{color:"#ef4444"}}>対応するカテゴリが見つかりませんでした</div>}
       </div>
@@ -864,15 +864,15 @@ function ResultBox({result, tgPageNames, tgPageCats}) {
     return (
       <div style={card}>
         <div style={lbl}>変換結果 — 単語王 中１単語</div>
-        <div style={{fontSize:16,fontWeight:800,color:"#38bdf8",marginBottom:10}}>📗 単語王 {pageName} / {catLabel}</div>
+        <div style={{fontSize:16,fontWeight:800,color:"#0284c7",marginBottom:10}}>📗 単語王 {pageName} / {catLabel}</div>
         <div style={sub}>▼ タイピィの冒険では（開始ステージ）</div>
         {result.data ? (
-          <div style={{display:"flex",alignItems:"center",gap:10,background:"#0f172a",borderRadius:10,padding:"12px 14px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,background:"#e0f2fe",borderRadius:10,padding:"12px 14px"}}>
             {chip(`ページ ${result.data.page}`,"#0ea5e9")}
-            <div style={{fontSize:16,fontWeight:800,color:"#94a3b8"}}>{result.data.stage}</div>
+            <div style={{fontSize:16,fontWeight:800,color:"#0284c7"}}>{result.data.stage}</div>
           </div>
         ) : <div style={{color:"#ef4444"}}>対応するステージが見つかりませんでした</div>}
-        <div style={{fontSize:11,color:"#475569",marginTop:10}}>※英語王は10問ずつ、タイピィの冒険は8問ずつのため、対応するステージは目安です</div>
+        <div style={{fontSize:11,color:"#0369a1",marginTop:10}}>※英語王は10問ずつ、タイピィの冒険は8問ずつのため、対応するステージは目安です</div>
       </div>
     );
   }
@@ -881,12 +881,12 @@ function ResultBox({result, tgPageNames, tgPageCats}) {
     return (
       <div style={card}>
         <div style={lbl}>変換結果 — 単語王 中１単語</div>
-        <div style={{fontSize:16,fontWeight:800,color:"#818cf8",marginBottom:10}}>🗺️ タイピィ ページ{result.tapii_page} - ステージ{result.tapii_stage}</div>
+        <div style={{fontSize:16,fontWeight:800,color:"#0369a1",marginBottom:10}}>🗺️ タイピィ ページ{result.tapii_page} - ステージ{result.tapii_stage}</div>
         <div style={sub}>▼ 単語王では</div>
         {result.data ? (
-          <div style={{display:"flex",alignItems:"center",gap:10,background:"#0f172a",borderRadius:10,padding:"12px 14px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,background:"#e0f2fe",borderRadius:10,padding:"12px 14px"}}>
             <span style={{fontSize:20}}>📗</span>
-            <div style={{fontSize:18,fontWeight:800,color:"#38bdf8"}}>{tgPageNames[result.data.page_no]} / {catLabel}</div>
+            <div style={{fontSize:18,fontWeight:800,color:"#0284c7"}}>{tgPageNames[result.data.page_no]} / {catLabel}</div>
           </div>
         ) : <div style={{color:"#ef4444"}}>対応するカテゴリが見つかりませんでした</div>}
       </div>
@@ -898,15 +898,15 @@ function ResultBox({result, tgPageNames, tgPageCats}) {
     return (
       <div style={card}>
         <div style={lbl}>変換結果 — 単語王 中２単語</div>
-        <div style={{fontSize:16,fontWeight:800,color:"#38bdf8",marginBottom:10}}>📘 単語王 {pageName} / {catLabel}</div>
+        <div style={{fontSize:16,fontWeight:800,color:"#0284c7",marginBottom:10}}>📘 単語王 {pageName} / {catLabel}</div>
         <div style={sub}>▼ タイピィの冒険では（開始ステージ）</div>
         {result.data ? (
-          <div style={{display:"flex",alignItems:"center",gap:10,background:"#0f172a",borderRadius:10,padding:"12px 14px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,background:"#e0f2fe",borderRadius:10,padding:"12px 14px"}}>
             {chip(`ページ ${result.data.page}`,"#0ea5e9")}
-            <div style={{fontSize:16,fontWeight:800,color:"#94a3b8"}}>{result.data.stage}</div>
+            <div style={{fontSize:16,fontWeight:800,color:"#0284c7"}}>{result.data.stage}</div>
           </div>
         ) : <div style={{color:"#ef4444"}}>対応するステージが見つかりませんでした</div>}
-        <div style={{fontSize:11,color:"#475569",marginTop:10}}>※英語王は10問ずつ、タイピィの冒険は8問ずつのため、対応するステージは目安です</div>
+        <div style={{fontSize:11,color:"#0369a1",marginTop:10}}>※英語王は10問ずつ、タイピィの冒険は8問ずつのため、対応するステージは目安です</div>
       </div>
     );
   }
@@ -915,12 +915,12 @@ function ResultBox({result, tgPageNames, tgPageCats}) {
     return (
       <div style={card}>
         <div style={lbl}>変換結果 — 単語王 中２単語</div>
-        <div style={{fontSize:16,fontWeight:800,color:"#818cf8",marginBottom:10}}>🗺️ タイピィ ページ{result.tapii_page} - ステージ{result.tapii_stage}</div>
+        <div style={{fontSize:16,fontWeight:800,color:"#0369a1",marginBottom:10}}>🗺️ タイピィ ページ{result.tapii_page} - ステージ{result.tapii_stage}</div>
         <div style={sub}>▼ 単語王では</div>
         {result.data ? (
-          <div style={{display:"flex",alignItems:"center",gap:10,background:"#0f172a",borderRadius:10,padding:"12px 14px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,background:"#e0f2fe",borderRadius:10,padding:"12px 14px"}}>
             <span style={{fontSize:20}}>📘</span>
-            <div style={{fontSize:18,fontWeight:800,color:"#38bdf8"}}>{tgPageNames[result.data.page_no]} / {catLabel}</div>
+            <div style={{fontSize:18,fontWeight:800,color:"#0284c7"}}>{tgPageNames[result.data.page_no]} / {catLabel}</div>
           </div>
         ) : <div style={{color:"#ef4444"}}>対応するカテゴリが見つかりませんでした</div>}
       </div>
@@ -932,15 +932,15 @@ function ResultBox({result, tgPageNames, tgPageCats}) {
     return (
       <div style={card}>
         <div style={lbl}>変換結果 — 単語王 中３単語</div>
-        <div style={{fontSize:16,fontWeight:800,color:"#38bdf8",marginBottom:10}}>📙 単語王 {pageName} / {catLabel}</div>
+        <div style={{fontSize:16,fontWeight:800,color:"#0284c7",marginBottom:10}}>📙 単語王 {pageName} / {catLabel}</div>
         <div style={sub}>▼ タイピィの冒険では（開始ステージ）</div>
         {result.data ? (
-          <div style={{display:"flex",alignItems:"center",gap:10,background:"#0f172a",borderRadius:10,padding:"12px 14px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,background:"#e0f2fe",borderRadius:10,padding:"12px 14px"}}>
             {chip(`ページ ${result.data.page}`,"#0ea5e9")}
-            <div style={{fontSize:16,fontWeight:800,color:"#94a3b8"}}>{result.data.stage}</div>
+            <div style={{fontSize:16,fontWeight:800,color:"#0284c7"}}>{result.data.stage}</div>
           </div>
         ) : <div style={{color:"#ef4444"}}>対応するステージが見つかりませんでした</div>}
-        <div style={{fontSize:11,color:"#475569",marginTop:10}}>※英語王は10問ずつ、タイピィの冒険は8問ずつのため、対応するステージは目安です</div>
+        <div style={{fontSize:11,color:"#0369a1",marginTop:10}}>※英語王は10問ずつ、タイピィの冒険は8問ずつのため、対応するステージは目安です</div>
       </div>
     );
   }
@@ -949,12 +949,12 @@ function ResultBox({result, tgPageNames, tgPageCats}) {
     return (
       <div style={card}>
         <div style={lbl}>変換結果 — 単語王 中３単語</div>
-        <div style={{fontSize:16,fontWeight:800,color:"#818cf8",marginBottom:10}}>🗺️ タイピィ ページ{result.tapii_page} - ステージ{result.tapii_stage}</div>
+        <div style={{fontSize:16,fontWeight:800,color:"#0369a1",marginBottom:10}}>🗺️ タイピィ ページ{result.tapii_page} - ステージ{result.tapii_stage}</div>
         <div style={sub}>▼ 単語王では</div>
         {result.data ? (
-          <div style={{display:"flex",alignItems:"center",gap:10,background:"#0f172a",borderRadius:10,padding:"12px 14px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,background:"#e0f2fe",borderRadius:10,padding:"12px 14px"}}>
             <span style={{fontSize:20}}>📙</span>
-            <div style={{fontSize:18,fontWeight:800,color:"#38bdf8"}}>{tgPageNames[result.data.page_no]} / {catLabel}</div>
+            <div style={{fontSize:18,fontWeight:800,color:"#0284c7"}}>{tgPageNames[result.data.page_no]} / {catLabel}</div>
           </div>
         ) : <div style={{color:"#ef4444"}}>対応するカテゴリが見つかりませんでした</div>}
       </div>
