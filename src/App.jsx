@@ -622,18 +622,18 @@ export default function Converter() {
   const s = { border:"none", cursor:"pointer", fontFamily:"inherit" };
 
   return (
-    <div style={{ minHeight:"100vh", background:"#f0f9ff", fontFamily:"'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif", display:"flex", flexDirection:"column", alignItems:"center", padding:"28px 16px" }}>
+    <div style={{ minHeight:"100vh", background:"#f0f9ff", fontFamily:"'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif", display:"flex", flexDirection:"column", alignItems:"center", padding:"16px 16px" }}>
 
       {/* ヘッダー */}
-      <div style={{ textAlign:"center", marginBottom:24 }}>
+      <div style={{ textAlign:"center", marginBottom:12 }}>
         <h1 style={{ fontSize:26, fontWeight:800, margin:0, color:"#0284c7", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>ユニット対応表ツール</h1>
         <div style={{ fontSize:13, color:"#0369a1", marginTop:4 }}>英語王 / 単語王 ↔ タイピィの冒険</div>
       </div>
 
-      <div style={{ background:"#ffffff", border:"1px solid #bae6fd", borderRadius:20, padding:"24px", width:"100%", maxWidth:540, boxShadow:"0 8px 32px rgba(14,165,233,0.15)" }}>
+      <div style={{ background:"#ffffff", border:"1px solid #bae6fd", borderRadius:20, padding:"16px", width:"100%", maxWidth:540, boxShadow:"0 8px 32px rgba(14,165,233,0.15)" }}>
 
         {/* セクション切替 */}
-        <div style={{ display:"flex", background:"#e0f2fe", borderRadius:12, padding:4, marginBottom:20, gap:4 }}>
+        <div style={{ display:"flex", background:"#e0f2fe", borderRadius:12, padding:3, marginBottom:12, gap:3 }}>
           {[{key:"typing",label:"⌨️ タイピング基礎"},{key:"tango",label:"📚 基礎単語"},{key:"tango3",label:"📗 中１単語"},{key:"tango5",label:"📘 中２単語"},{key:"tango7",label:"📙 中３単語"}].map(sec=>(
             <button key={sec.key} onClick={()=>handleSectionChange(sec.key)} style={{ ...s, flex:1, padding:"9px 4px", borderRadius:9, fontSize:12, fontWeight:700, background:section===sec.key?"linear-gradient(135deg,#0ea5e9,#6366f1)":"transparent", color:section===sec.key?"#fff":"#0369a1", boxShadow:section===sec.key?"0 4px 12px rgba(14,165,233,0.3)":"none" }}>{sec.label}</button>
           ))}
@@ -645,7 +645,7 @@ export default function Converter() {
         )}
 
         {/* 方向切替 */}
-        <div style={{ display:"flex", background:"#e0f2fe", borderRadius:12, padding:4, marginBottom:20, gap:4 }}>
+        <div style={{ display:"flex", background:"#e0f2fe", borderRadius:12, padding:3, marginBottom:12, gap:3 }}>
           {[
             {key:"eigo_to_tapii",label:section==="typing"?"英語王 → タイピィ":"単語王 → タイピィ",icon:"👑"},
             {key:"tapii_to_eigo",label:section==="typing"?"タイピィ → 英語王":"タイピィ → 単語王",icon:"🗺️"}
@@ -659,7 +659,7 @@ export default function Converter() {
           <div>
             <Label>英語王 Unit番号</Label>
             <SegmentControl options={[1,2,3,4,5,6].map(u=>({value:u,label:`Unit ${u}`}))} value={tbUnit} onChange={v=>{setTbUnit(v);setTbSub(1);setResult(null);}} />
-            <div style={{height:14}}/>
+            <div style={{height:10}}/>
             <Label>Sub-Unit番号（1〜{tbMaxSub}）</Label>
             <NumberSlider value={tbSub} min={1} max={tbMaxSub} onChange={v=>{setTbSub(v);setResult(null);}} />
           </div>
@@ -668,7 +668,7 @@ export default function Converter() {
           <div>
             <Label>タイピィ ページ番号</Label>
             <SegmentControl options={Array.from({length:9},(_,i)=>({value:i+1,label:`P${i+1}`}))} value={tbPage} onChange={v=>{setTbPage(v);setTbStage(tbGetPageStages(v)[0]||1);setResult(null);}} />
-            <div style={{height:14}}/>
+            <div style={{height:10}}/>
             <Label>ステージ番号</Label>
             <SegmentControl options={tbPageStages.map(s=>({value:s,label:`${s}`}))} value={tbStage} onChange={v=>{setTbStage(v);setResult(null);}} />
           </div>
@@ -677,7 +677,7 @@ export default function Converter() {
           <div>
             <Label>単語王 ページ（単語番号範囲）</Label>
             <SegmentControl options={[1,2,3,4].map(p=>({value:p,label:TG_PAGE_NAMES[p]}))} value={tgPage} onChange={v=>{setTgPage(v);setTgCat(1);setResult(null);}} />
-            <div style={{height:14}}/>
+            <div style={{height:10}}/>
             <Label>カテゴリ</Label>
             <SegmentControl options={TG_PAGE_CATS[tgPage].map(c=>({value:c.cat_no,label:c.label}))} value={tgCat} onChange={v=>{setTgCat(v);setResult(null);}} />
           </div>
@@ -686,7 +686,7 @@ export default function Converter() {
           <div>
             <Label>単語王 ページ（単語番号範囲）</Label>
             <SegmentControl options={[1,2,3,4].map(p=>({value:p,label:TG_PAGE_NAMES[p]}))} value={tg3Page} onChange={v=>{setTg3Page(v);setTg3Cat(1);setResult(null);}} />
-            <div style={{height:14}}/>
+            <div style={{height:10}}/>
             <Label>カテゴリ</Label>
             <SegmentControl options={TG3_PAGE_CATS[tg3Page].map(c=>({value:c.cat_no,label:c.label}))} value={tg3Cat} onChange={v=>{setTg3Cat(v);setResult(null);}} />
           </div>
@@ -695,7 +695,7 @@ export default function Converter() {
           <div>
             <Label>タイピィ ページ番号</Label>
             <SegmentControl options={[1,2,3].map(p=>({value:p,label:`P${p}`}))} value={tg3TapiiPage} onChange={v=>{setTg3TapiiPage(v);setTg3TapiiStage(tg3GetPageStages(v)[0]||1);setResult(null);}} />
-            <div style={{height:14}}/>
+            <div style={{height:10}}/>
             <Label>ステージ番号</Label>
             <SegmentControl options={tg3TapiiStages.map(s=>({value:s,label:`${s}`}))} value={tg3TapiiStage} onChange={v=>{setTg3TapiiStage(v);setResult(null);}} />
           </div>
@@ -704,7 +704,7 @@ export default function Converter() {
           <div>
             <Label>タイピィ ページ番号</Label>
             <SegmentControl options={[1,2,3,4].map(p=>({value:p,label:`P${p}`}))} value={tgTapiiPage} onChange={v=>{setTgTapiiPage(v);setTgTapiiStage(tgGetPageStages(v)[0]||1);setResult(null);}} />
-            <div style={{height:14}}/>
+            <div style={{height:10}}/>
             <Label>ステージ番号</Label>
             <SegmentControl options={tgTapiiStages.map(s=>({value:s,label:`${s}`}))} value={tgTapiiStage} onChange={v=>{setTgTapiiStage(v);setResult(null);}} />
           </div>
@@ -714,7 +714,7 @@ export default function Converter() {
           <div>
             <Label>単語王 ページ（単語番号範囲）</Label>
             <SegmentControl options={[1,2,3,4].map(p=>({value:p,label:TG_PAGE_NAMES[p]}))} value={tg5Page} onChange={v=>{setTg5Page(v);setTg5Cat(1);setResult(null);}} />
-            <div style={{height:14}}/>
+            <div style={{height:10}}/>
             <Label>カテゴリ</Label>
             <SegmentControl options={TG5_PAGE_CATS[tg5Page].map(c=>({value:c.cat_no,label:c.label}))} value={tg5Cat} onChange={v=>{setTg5Cat(v);setResult(null);}} />
           </div>
@@ -723,7 +723,7 @@ export default function Converter() {
           <div>
             <Label>タイピィ ページ番号</Label>
             <SegmentControl options={[1,2].map(p=>({value:p,label:`P${p}`}))} value={tg5TapiiPage} onChange={v=>{setTg5TapiiPage(v);setTg5TapiiStage(tg5GetPageStages(v)[0]||1);setResult(null);}} />
-            <div style={{height:14}}/>
+            <div style={{height:10}}/>
             <Label>ステージ番号</Label>
             <SegmentControl options={tg5Stages.map(s=>({value:s,label:`${s}`}))} value={tg5TapiiStage} onChange={v=>{setTg5TapiiStage(v);setResult(null);}} />
           </div>
@@ -733,7 +733,7 @@ export default function Converter() {
           <div>
             <Label>単語王 ページ（単語番号範囲）</Label>
             <SegmentControl options={[1,2,3,4].map(p=>({value:p,label:TG_PAGE_NAMES[p]}))} value={tg7Page} onChange={v=>{setTg7Page(v);setTg7Cat(1);setResult(null);}} />
-            <div style={{height:14}}/>
+            <div style={{height:10}}/>
             <Label>カテゴリ</Label>
             <SegmentControl options={TG7_PAGE_CATS[tg7Page].map(c=>({value:c.cat_no,label:c.label}))} value={tg7Cat} onChange={v=>{setTg7Cat(v);setResult(null);}} />
           </div>
@@ -742,20 +742,20 @@ export default function Converter() {
           <div>
             <Label>タイピィ ページ番号</Label>
             <SegmentControl options={[1,2].map(p=>({value:p,label:`P${p}`}))} value={tg7TapiiPage} onChange={v=>{setTg7TapiiPage(v);setTg7TapiiStage(tg7GetPageStages(v)[0]||1);setResult(null);}} />
-            <div style={{height:14}}/>
+            <div style={{height:10}}/>
             <Label>ステージ番号</Label>
             <SegmentControl options={tg7Stages.map(s=>({value:s,label:`${s}`}))} value={tg7TapiiStage} onChange={v=>{setTg7TapiiStage(v);setResult(null);}} />
           </div>
         )}
 
-        <button onClick={handleConvert} style={{ ...s, width:"100%", marginTop:20, padding:"13px", background:"#fbbf24", borderRadius:12, color:"#78350f", fontSize:15, fontWeight:800, letterSpacing:1, boxShadow:"0 4px 20px rgba(251,191,36,0.35)" }}>
+        <button onClick={handleConvert} style={{ ...s, width:"100%", marginTop:12, padding:"11px", background:"#fbbf24", borderRadius:12, color:"#78350f", fontSize:15, fontWeight:800, letterSpacing:1, boxShadow:"0 4px 20px rgba(251,191,36,0.35)" }}>
           対応するステージを調べる →
         </button>
 
         {result && <ResultBox result={result} tgPageNames={TG_PAGE_NAMES} tgPageCats={TG_PAGE_CATS} />}
       </div>
 
-      <div style={{ fontSize:11, color:"#0369a1", marginTop:16, textAlign:"center" }}>
+      <div style={{ fontSize:11, color:"#0369a1", marginTop:8, textAlign:"center" }}>
         ※ movie_url・question_body・answer照合（前後一致）で生成した対応表です
       </div>
     </div>
