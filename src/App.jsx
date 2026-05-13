@@ -622,7 +622,7 @@ export default function Converter() {
   const s = { border:"none", cursor:"pointer", fontFamily:"inherit" };
 
   return (
-    <div style={{ minHeight:"100vh", background:"#f0f9ff", fontFamily:"'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif", display:"flex", flexDirection:"column", alignItems:"center", padding:"16px 16px" }}>
+    <div style={{ background:"#f0f9ff", fontFamily:"'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif", display:"flex", flexDirection:"column", alignItems:"center", padding:"16px 16px" }}>
 
       {/* ヘッダー */}
       <div style={{ textAlign:"center", marginBottom:12 }}>
